@@ -25,6 +25,31 @@ bot.on("message", async message =>{
     if (cmd === `${prefix}romero`) {
         return message.reply("El mejor!")
     }
+
+    if (cmd === `${prefix}clear`) {
+        if(message.deletable){
+            message.delete();
+        }
+
+        if(!message.member.hasPermission("MANAGE_MESSAGES")){
+            return message.reply("Que no puedes crack").then(m=> m.delete(50000));
+        }
+
+        if(isNaN(args[0]) || parseInt(args[0]) <=0){
+            return message.reply("Pon un numerito anda").then(m=> m.delete(5000));
+        }
+
+        let deleteAmount;
+        if(parseInt(args[0])>100){
+            deleteAmount = 100;
+        }else{
+            deleteAmount = parseInt(args[0]);
+        }
+
+        message.channel.bulkDelete(deleteAmount,true).catch(err => message.reply(`Algo va mal... ${err}`))
+    }
+
+    
 })
 
 
