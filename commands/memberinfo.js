@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
 
     const userEmbed = new Discord.MessageEmbed()
         .setAuthor(member.user.tag, member.user.displayAvatarURL())
-        .setTimesTamp()
+        .setTimestamp()
         .setColor('BLUE')
         .setImage(member.user.displayAvatarURL())
         .addField("ID", member.id)
